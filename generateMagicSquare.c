@@ -5,6 +5,10 @@
 
 void generateMagicSquare(int square[][cols])
 {
+    if (rows < 3) {
+        printf("Smallest square size is 3\n");
+        exit(1);
+    }
     int magicSum = (rows * (rows * rows + 1)) / 2;
     do {
         randomizeSquare(square);
