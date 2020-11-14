@@ -5,6 +5,10 @@
 
 void generateMagicSquare(int square[][cols])
 {
+    if (rows < 3) {
+        printf("Smallest square size is 3\n");
+        exit(1);
+    }
     int magicSum = (rows * (rows * rows + 1)) / 2;
     do {
         randomizeSquare(square);
@@ -17,10 +21,9 @@ void randomizeSquare(int square[rows][cols])
     setOccupiedNumbers(occupiedNumbers, rows * cols);
     for (int row = 0, i = 0; row < rows; ++row) {
         for (int col = 0; col < cols; ++col, ++i) {
-            do {
-                square[row][col] = rand() % (rows * cols) + 1;
-            } while (isOccupied(square[row][col], occupiedNumbers, rows * cols));
-            occupiedNumbers[i] = square[row][col];
+            int index = rand() % (rows * cols - i);
+            square[row][col] = occupiedNumbers[index];
+            swapNumbers(&occupiedNumbers[rows * cols - 1 - i], &occupiedNumbers[index]);
         }
     }
 }
@@ -28,8 +31,15 @@ void randomizeSquare(int square[rows][cols])
 void setOccupiedNumbers(int occupiedNumbers[], int size)
 {
     for (int i = 0; i < size; ++i) {
-        occupiedNumbers[i] = 0;
+        occupiedNumbers[i] = i + 1;
     }
+}
+
+void swapNumbers(int* lhs, int* rhs)
+{
+    int temp = *lhs;
+    *lhs = *rhs;
+    *rhs = temp;
 }
 
 int isOccupied(int value, int occupiedNumbers[], int size)
@@ -42,8 +52,10 @@ int isOccupied(int value, int occupiedNumbers[], int size)
     return 0;  // true;
 }
 
-int isMagicSquare(int square[rows][cols], int magicSum) {
-    return (isSumInRowsEqualTo(magicSum, square) && isSumInColsEqualTo(magicSum, square) && isSumInDiagonalsEqualTo(magicSum, square));
+int isMagicSquare(int square[rows][cols], int magicSum)
+{
+    return (isSumInRowsEqualTo(magicSum, square) && isSumInColsEqualTo(magicSum, square) &&
+            isSumInDiagonalsEqualTo(magicSum, square));
 }
 
 int isSumInRowsEqualTo(int expectedSum, int square[rows][cols])

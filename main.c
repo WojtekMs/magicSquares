@@ -4,15 +4,18 @@
 
 #include "generateMagicSquare.h"
 
-const int cols = 3;
-const int rows = 3;
+int rows;
+int cols;
 
 int main()
 {
-    int magicSum = (rows * (rows*rows + 1)) / 2;
+    int squareSize = 0;
     srand((unsigned int)time(NULL));
-    int square[rows][cols];
-
+    printf("Please enter the size of the square: ");
+    scanf("%d", &squareSize);
+    cols = rows = squareSize;
+    int magicSum = (rows * (rows*rows + 1)) / 2;
+    int (*square)[cols] = malloc(sizeof(int[rows][cols]));
     generateMagicSquare(square);
     printSquare(square);
     printf("------------------------\n");
@@ -21,5 +24,7 @@ int main()
     printf(isSumInRowsEqualTo(magicSum, square) ? "true\n" : "false\n");
     printf(isSumInDiagonalsEqualTo(magicSum, square) ? "true\n" : "false\n");
     printf(areNumbersUnique(square) ? "true\n" : "false\n");
+
+    free(square);
 
 }
