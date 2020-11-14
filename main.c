@@ -16,6 +16,7 @@ int main()
 
     printf(isSumInColsEqualTo(magicSum, square) ? "true\n" : "false\n");
     printf(isSumInRowsEqualTo(magicSum, square) ? "true\n" : "false\n");
+    printf(isSumInDiagonalsEqualTo(magicSum, square) ? "true\n" : "false\n");
     printf(areNumbersUnique(square) ? "true\n" : "false\n");
 
 }
