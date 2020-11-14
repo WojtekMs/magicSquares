@@ -1,12 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 #include "generateMagicSquare.h"
 
 int main()
 {
     int magicSum = (rows * (rows*rows + 1)) / 2;
-    srand(time_t(NULL));
+    srand((unsigned int)time(NULL));
     int square[rows][cols];
 
     generateMagicSquare(square);
