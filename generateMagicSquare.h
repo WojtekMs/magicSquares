@@ -1,8 +1,8 @@
 #ifndef GENERATE_MAGIC_SQUARE
 #define GENERATE_MAGIC_SQUARE
 
-const int rows = 3;
-const int cols = 3;
+extern const int rows;
+extern const int cols;
 
 void printSquare(int square[rows][cols]);
 
