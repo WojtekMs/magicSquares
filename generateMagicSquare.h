@@ -17,7 +17,7 @@ int rowUnique(int row[], int rowSize);
 void randomizeSquare(int square[rows][cols]);
 void setOccupiedNumbers(int occupiedNumbers[], int size);
 int isOccupied(int value, int occupiedNumbers[], int size);
-void swapNumbers(int lhs, int rhs);
+void swapNumbers(int* lhs, int* rhs);
 
 void generateMagicSquare(int square[][cols]);
 int isMagicSquare(int square[rows][cols], int magicSum);
