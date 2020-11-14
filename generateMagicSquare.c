@@ -17,10 +17,12 @@ void randomizeSquare(int square[rows][cols])
     setOccupiedNumbers(occupiedNumbers, rows * cols);
     for (int row = 0, i = 0; row < rows; ++row) {
         for (int col = 0; col < cols; ++col, ++i) {
-            do {
-                square[row][col] = rand() % (rows * cols) + 1;
-            } while (isOccupied(square[row][col], occupiedNumbers, rows * cols));
-            occupiedNumbers[i] = square[row][col];
+            // do {
+                int index = rand() % (rows * cols) - i;
+                square[row][col] = occupiedNumbers[index];
+            // } while (isOccupied(square[row][col], occupiedNumbers, rows * cols));
+            // occupiedNumbers[i] = square[row][col];
+            swapNumbers(occupiedNumbers[rows * cols - 1 - i], occupiedNumbers[index]);
         }
     }
 }
@@ -28,8 +30,14 @@ void randomizeSquare(int square[rows][cols])
 void setOccupiedNumbers(int occupiedNumbers[], int size)
 {
     for (int i = 0; i < size; ++i) {
-        occupiedNumbers[i] = 0;
+        occupiedNumbers[i] = i + 1;
     }
+}
+
+void swapNumbers(int lhs, int rhs) {
+    int temp = lhs;
+    lhs = rhs;
+    rhs = temp;
 }
 
 int isOccupied(int value, int occupiedNumbers[], int size)

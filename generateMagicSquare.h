@@ -1,8 +1,8 @@
 #ifndef GENERATE_MAGIC_SQUARE
 #define GENERATE_MAGIC_SQUARE
 
-const int rows = 3;
-const int cols = 3;
+extern const int rows;
+extern const int cols;
 
 void printSquare(int square[rows][cols]);
 
@@ -17,6 +17,7 @@ int rowUnique(int row[], int rowSize);
 void randomizeSquare(int square[rows][cols]);
 void setOccupiedNumbers(int occupiedNumbers[], int size);
 int isOccupied(int value, int occupiedNumbers[], int size);
+void swapNumbers(int lhs, int rhs);
 
 void generateMagicSquare(int square[][cols]);
 int isMagicSquare(int square[rows][cols], int magicSum);

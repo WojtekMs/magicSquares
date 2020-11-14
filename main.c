@@ -4,6 +4,9 @@
 
 #include "generateMagicSquare.h"
 
+const int cols = 3;
+const int rows = 3;
+
 int main()
 {
     int magicSum = (rows * (rows*rows + 1)) / 2;
